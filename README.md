@@ -143,13 +143,13 @@ Note: Hash should NEVER be used in a production environment. It is unbounded and
 
 ```
     Wrest::Caching.default_to_hash!
-    c42 = 'http://c42.in'.to_uri.get
+    c42 = 'https://www.gojek.io/'.to_uri.get
 ```
 
 To use Hash as a cache store in an explicit request (without setting hash as default), use the following API:
 
 ```
-    r1 = "http://c42.in".to_uri.using_hash.get
+    r1 = "https://www.gojek.io/".to_uri.using_hash.get
 ```
 
 #### Memcached
@@ -167,7 +167,7 @@ To use Memcached as a cache store in an explicit request (without setting memcac
 
 ```
     Wrest::Caching.enable_memcached
-    r2 = "http://c42.in".to_uri.using_memcached.get
+    r2 = "https://www.gojek.io/".to_uri.using_memcached.get
 ```
 
 #### Redis
@@ -185,7 +185,7 @@ To use Redis as a cache store in an explicit request (without setting redis as d
 
 ```
     Wrest::Caching.enable_redis
-    r3 = "http://c42.in".to_uri.using_redis.get
+    r3 = "https://www.gojek.io/".to_uri.using_redis.get
 ```
 
 A detailed writeup regarding caching as defined by RFC 2616, and how Wrest implements caching is at [Wrest Caching Doc](https://github.com/c42/wrest/blob/master/Caching.markdown)
@@ -195,7 +195,7 @@ You can create your own back-ends for Wrest caching by implementing the interfac
 To explicitly disable caching for specific requests:
 
 ```
-    "http://c42.in".to_uri.disable_cache.get
+    "https://www.gojek.io/".to_uri.disable_cache.get
 ```
 
 ### Callbacks
@@ -242,7 +242,7 @@ while using asynchronous request is through callbacks.
 Asynchronous requests support pluggable backends. The default backend used for asynchronous requests is ruby threads, which is only reliable when using JRuby.
 
 ```
-  "http://c42.in".to_uri.get_async do |callback|
+  "https://www.gojek.io/".to_uri.get_async do |callback|
     callback.on_ok do |response|
       Wrest.logger.info "Ok."
     end
@@ -265,7 +265,7 @@ or
 You can also override the default on Uri objects.
 
 ```
-  "http://c42.in".to_uri.using_em.get_async do |callback|
+  "https://www.gojek.io/".to_uri.using_em.get_async do |callback|
     callback.on_ok do |response|
       Wrest.logger.info "Ok."
     end
@@ -275,7 +275,7 @@ You can also override the default on Uri objects.
 You can decide which AsyncBackend to use at runtime through to `to_uri`'s options hash.
 
 ```
-  "http://c42.in".to_uri(asynchronous_backend: ThreadBackend.new(number_of_threads)).get_async do |callback|
+  "https://www.gojek.io/".to_uri(asynchronous_backend: ThreadBackend.new(number_of_threads)).get_async do |callback|
     callback.on_ok do |response|
       Wrest.logger.info "Ok."
     end
@@ -364,7 +364,7 @@ For more information, look up the [multi_json](http://github.com/intridea/multi_
 
 ### Build
 
-Standard options are available and can be listed using `rake -T`. Use rake:rcov for coverage and rake:rdoc to generate documentation. The link to the continuous integration build is over at the C42 Engineering [open source](http://c42.in/open_source) page.
+Standard options are available and can be listed using `rake -T`. Use rake:rcov for coverage and rake:rdoc to generate documentation. The link to the continuous integration build is over at the C42 Engineering [open source](https://www.gojek.io/) page.
 
 ## Documentation
 
